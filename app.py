@@ -4,7 +4,7 @@ from flask import request,Flask,redirect,render_template
 import sqlite3
 
 app = flask.Flask(__name__, template_folder='.')
-app.config["DEBUG"] = True
+app.config["DEBUG"] = False
 
 @app.route('/', methods=['GET'])
 def home():
