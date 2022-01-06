@@ -5,7 +5,191 @@
     <head>
         <meta charset="UTF-8">
         <title>Home</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        
+        <style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,200;0,400;0,800;1,400&display=swap');
+
+html{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+    margin: 0%;
+    padding: 0;
+    background-color: #16232C;
+
+}
+
+body {
+
+    /*background: #16232C;*/
+    /*color: #16232C;*/
+    background: black;
+    color: white;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.search_box {
+    display: flex;
+    background: #222D32;
+    width: 500px;
+    padding: 0px;
+    margin-bottom: 40px;
+    border-radius: 10px 10px 10px 10px;
+    align-self: center;
+    height: 60px;
+    transition: all 1s;
+}
+
+.search_box:hover {
+    display: flex;
+    background: #222D32;
+    padding: 0px;
+    border-radius: 10px 10px 10px 10px;
+    align-self: center;
+    transition: all 2s;
+    width: 570px;
+    height: 70px;
+    margin-bottom: 40px;
+    transform: scale(1.02);
+    outline: 2px solid white;
+}
+
+.input_box {
+    border: none;
+    outline: none;
+    background: none;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width: 500px;
+    color: #8FBCBB;
+    font-size: 18px;
+    border-radius: 0px 0px 0px 0px;
+    height: 60px;
+    text-align: center;
+    transition: all 1s;
+}
+
+.input_box:hover {
+    border: none;
+    background: none;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width: 570px;
+    color: #8FBCBB;
+    font-size: 20px;
+    border-radius: 0px 0px 0px 0px;
+    height: 70px;
+    text-align: center;
+    transition: all 2s;
+    transform: scale(1.02);
+
+}
+
+.image {
+    text-align: center;
+    padding-top: 7px;
+}
+
+.bg {
+    padding: 40px;
+}
+
+.button {
+    display: flex;
+    justify-content: space-evenly;
+    width: 500px;
+}
+
+.pushable {
+    align-self: center;
+    background: #121C23;
+    width: 200;
+    border-radius: 12px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+}
+
+
+.front {
+    align-self: center;
+    display: block;
+    width: 60px;
+    height: 50px;
+    border-radius: 12px;
+    font-size: 1.25rem;
+    background: #121C23;
+    color: white;
+}
+
+.pushable:hover .front{
+    background-color: rgb(27, 108, 110);
+}
+
+.pushable:active .front {
+    transform: translateY(4px);
+}
+
+
+#time-date {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'JetBrains Mono', Arial, Helvetica, sans-serif;
+}
+
+#time {
+    text-align: center;
+    font-size: 88px;
+    font-weight: 1000;
+    font-family: 'JetBrains Mono', Arial, Helvetica, sans-serif;
+}
+
+#date {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-family: 'JetBrains Mono', Arial, Helvetica, sans-serif;
+}
+
+#quote {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 100;
+    font-family: 'JetBrains Mono', Arial, Helvetica, sans-serif;
+}
+
+#author {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 15px;
+    font-weight: 100;
+    font-family: 'JetBrains Mono', Arial, Helvetica, sans-serif;
+}
+
+        </style>
+
     </head>
 
     <body>
@@ -27,8 +211,177 @@
             <div id="author"></div>
 
         </div>
-<script src="time.js"></script>
-<script src="quote.js"></script>
+
+
+    <script>
+window.onload = displayClock();
+function displayClock() {
+    const monthNames = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+    ];
+
+    var d = new Date();
+    var mm = monthNames[d.getMonth()];
+    var dd = d.getDate();
+    var min = (mins = ('0' + d.getMinutes()).slice(-2));
+    var hh = (hours = ('0' + d.getHours()).slice(-2));
+
+    var current_time = hh + ':' + min
+    var current_date = mm + ' ' + dd
+  
+    document.getElementById('time').innerText = current_time;
+    document.getElementById('date').innerText = current_date;
+
+    setTimeout(displayClock, 1000);
+}
+
+    </script>
+
+
+    <script>
+// http://jsbin.com/arukov/1/edit?html,output //
+  (function() {
+      var quotes = [
+        {
+          text: "If you keep moving in the right direction you'll get your dream or something better.",
+          author: "Unkown"
+        },
+        {
+          text: "It's not about ideas. It's about making ideas happen.",
+          author: "Scott Belsky"
+        },
+        {
+          text: "Always deliver more than expected.",
+          author: "Larry Page"
+        },
+        {
+          text: "The way to get started is to quit talking and begin doing.",
+          author: "Walt Disney"
+        },
+        {
+          text: "'Someday' is a disease that will take your dreams to the grave with you. Just do it and correct course along the way.",
+          author: "Timothy Ferriss"
+        },
+        {
+          text: "Timing, perseverance, and ten years of trying will eventually make you look like an overnight success.",
+          author: "Biz Stone"
+        },
+        {
+          text: "You may be disappointed if you fail, but you are doomed if you don't try.",
+          author: "Beverly Sills"
+        },
+        {
+          text: "The greatest danger for most of us is not that our aim is too high and we miss it, but that it is too low and we reach it.",
+          author: "Michaelangelo"
+        },
+          {
+          text: "A good plan violently executed now is better than a perfect plan executed next week.",
+          author: "George Patton"
+        },
+        {
+          text: "Do not focus on the victory, focus on the task.",
+          author: "Erik Spoelstra"
+        },
+        {
+          text: "The only thing standing between you and your goal is the bullshit story you keep telling yourself as to why you cant achieve it.",
+          author: "Jordan Belfort"
+        },
+        {
+          text: "Time is the capital of your life, so spend it wisely.",
+          author: "Tony Robbins"
+        },
+        {
+          text: "If you wait until you feel like doing something, you will likely never accomplish it.",
+          author: "John C Maxwell"
+        },
+        {
+          text: "The joy is in creating, not maintaining.",
+          author: "Vince Lombardi"
+        },
+        {
+          text: "All of the answers to your problems are outside your comfort zone.",
+          author: "Keith Cunningham"
+        },
+        {
+          text: "If everything seems under control, youre just not going fast enough.",
+          author: "Mario Andrett"
+        },
+        {
+          text: "When everything seems to be going against you, remember that the airplane takes off against the wind, not with it.",
+          author: "Henry Ford"
+        },
+        {
+          text: "You shouldn't focus on why you cant do something, which is what most people do. You should focus on why perhaps you can, and be one of the exceptions.",
+          author: "Steve Case"
+        },
+        {
+          text: "Risk more than others think is safe. Dream more than others think is practical.",
+          author: "Howard Schultz"
+        },
+        {
+          text: "Be undeniably good. No marketing effort or social media buzzword can be a substitute for that.",
+          author: "Anthony Volodkin"
+        },
+        {
+          text: "You miss 100 percent of the shots you don't take.",
+          author: "Wayne Gretzky"
+        },
+        {
+          text: "If you only do what you can do, you'll never be anything more than who you are now.",
+          author: "Alex MarzBar"
+        },
+        {
+          text: "Do what no one else does&#39; follow through.",
+          author: "Unkown"
+        },
+        {
+          text: "We are kept from our goal not by obstacles but by a clear path to a lesser goal.",
+          author: "Robert Brault"
+        },
+        {
+          text: "Your most unhappy customers are your greatest source of learning.",
+          author: "Bill Gates"
+        },
+        {
+          text: "If you do what you've always done, you'll get what you've always gotten.",
+          author: "Tony Robbins"
+        },
+        {
+          text: "Success usually comes to those who are too busy to be looking for it.",
+          author: "Henry David Thoreau"
+        },
+        {
+          text: "People who don't take risks generally make about two big mistakes a year. People who do take risks generally make about two big mistakes a year.",
+          author: "Peter F. Drucker"
+        },
+        {
+          text: "Man cannot discover new oceans unless he has the courage to lose sight of the shore.",
+          author: "Andre Gide"
+        },
+        {
+          text: "The question isn't who is going to let me. It's who is going to stop me.",
+          author: "Ayn Rand"
+        },
+      ];
+      var quote = quotes[Math.floor(Math.random() * quotes.length)];
+      document.getElementById('quote').innerHTML=""+quote.text+"";
+      document.getElementById('author').innerHTML=""+quote.author+"";
+    })();
+
+    </script>
+
+
     </body>
 
 </html>
