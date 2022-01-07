@@ -3,11 +3,22 @@ from flask import request,Flask,redirect,render_template
 
 import sqlite3
 import os
+from threading import Thread
 
 app = flask.Flask(__name__, template_folder='.')
 app.config["DEBUG"] = False
 
-@app.route('/', methods=['GET'])
+
+def run():
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
+
+def redbull():
+    t = Thread(target=run)
+    t.start()  
+
+
+@app.route('/api/', methods=['GET'])
 def home():
     #get the data stored in db.sqlite as a dictionary from table default srch
     conn = sqlite3.connect('db.sqlite3')
@@ -121,9 +132,13 @@ def home():
     '''
 
     #return "<h1>SRCH</h1><p>Supercharge your web searches</p>"
+    return redirect('../')
+
+@app.route('/', methods=['GET'])
+def index():
     return render_template('index.html')
-    
+
+
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    redbull()
     #app.run()
